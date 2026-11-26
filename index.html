@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дедлайн-доска</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Шапка сайта с названием и кратким описанием -->
+  <header>
+    <h1>Дедлайн-доска</h1>
+    <p>Управляй своими учебными задачами легко</p>
+  </header>
+  <!-- Основной контент страницы -->
+  <main>
+    <!-- Секция доски с тремя колонками задач -->
+    <section class="board-section" aria-labelledby="board-title">
+      <h2 id="board-title">Доска</h2>
+      <div class="board-grid">
+        <div class="board-column">
+          <h3>Очередь</h3>
+          <ul class="list" id="list"></ul> <!-- Список для колонки "Очередь" -->
+        </div>
+        <div class="board-column">
+          <h3>В работе</h3>
+          <ul class="list" id="list2"></ul> <!-- Список для колонки "В работе" -->
+        </div>
+        <div class="board-column">
+          <h3>Готово</h3>
+          <ul class="list" id="list3"></ul> <!-- Список для колонки "Готово" -->
+        </div>
+      </div>
+    </section>
+    <!-- Секция формы для добавления новой задачи -->
+    <section class="form-section" aria-labelledby="form-title">
+      <h2 id="form-title">Новая задача</h2>
+      <form class="task-form">
+        <label for="task-title" id="label-title">Название задачи</label>
+        <input type="text" id="task-title" name="task-title">
+        <label for="task-date" id="label-date">Срок</label>
+        <input type="date" id="task-date" name="task-date">
+        <button type="button">Добавить</button>
+      </form>
+    </section>
+    <!-- Секция с подсказкой дня -->
+    <section class="hint-section" aria-labelledby="hint-title">
+      <h2 id="hint-title">Подсказка дня</h2>
+      <p>Начни с самой сложной задачи, пока свеж.</p>
+    </section>
+  </main>
+  <!-- Подвал с информацией об учебном проекте -->
+  <footer>
+    <p>Учебный проект школьника. Все права защищены.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
