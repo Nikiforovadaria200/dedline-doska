@@ -1,0 +1,130 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Переменные для цветов, отступов и скруглений под тему доски */
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --ink: #1a1a1a;
+  --muted: #5f6368;
+  --accent: #0056b3;
+  --border: #dadce0;
+  --radius: 8px;
+  --gap: 16px;
+}
+
+/* Базовые стили страницы и типографика для мобильных экранов от 320px */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  background-color: var(--bg);
+}
+
+/* Сброс стандартных отступов у текстовых элементов и списков */
+h1, h2, h3, p, ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Шапка сайта: элементы в ряд с переносом на узких экранах */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  align-items: center;
+  padding: var(--gap);
+}
+
+/* Отступы для основного контента и подвала */
+main, footer {
+  padding: var(--gap);
+}
+
+/* Оформление секций доски, формы и подсказки как карточек */
+.board-section, .form-section, .hint-section {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--gap);
+  margin-bottom: var(--gap);
+}
+
+/* Сетка колонок доски: в базе всё в один столбик */
+.board-grid {
+  display: grid;
+  gap: var(--gap);
+}
+
+/* Заголовки колонок задач */
+.board-column h3 {
+  color: var(--muted);
+  font-size: 18px;
+  margin-bottom: var(--gap);
+}
+
+/* Сетка карточек внутри колонки: без указания колонок в базе */
+.list {
+  display: grid;
+  gap: var(--gap);
+}
+
+/* Форма новой задачи: элементы в ряд с переносом */
+.task-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  align-items: flex-end;
+}
+
+/* Подписи к полям формы */
+label {
+  display: block;
+  color: var(--muted);
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+/* Поля ввода и кнопка: минимальная высота для удобства нажатия */
+input, button {
+  min-height: 44px;
+  font-size: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 0 var(--gap);
+  color: var(--ink);
+  background-color: var(--surface);
+}
+
+/* Стили для кнопки добавления задачи */
+button {
+  background-color: var(--accent);
+  color: var(--surface);
+  border-color: var(--accent);
+  cursor: pointer;
+}
+
+/* Видимый фокус для клавиатурной навигации */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Планшеты: сетка карточек в две колонки */
+@media (min-width: 640px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Десктопы: сетка карточек в три колонки */
+@media (min-width: 1024px) {
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
