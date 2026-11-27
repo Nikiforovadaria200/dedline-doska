@@ -37,3 +37,34 @@ function renderItems(items) {
 
 // Вызываем функцию отрисовки с нашим массивом задач
 renderItems(ITEMS);
+
+/* Перерисовка списка целиком: источник истины — массив tasks */
+function renderBoard() {
+  /* Контейнер списка берём из разметки при каждом вызове */
+  const container = document.querySelector("#list");
+
+  /* Пустой массив: приглашаем добавить первую запись и выходим */
+  if (tasks.length === 0) {
+    container.innerHTML = '<li class="empty">Задач пока нет — добавьте первую через форму «Новая задача».</li>';
+    return;
+  }
+
+  /* Одна сборка HTML: map делает разметку по каждой записи, join склеивает без запятых */
+  container.innerHTML = tasks.map((task) => {
+    /* Русская метка вместо технического значения статуса */
+    let label = "Очередь";
+    if (task.status === "in-progress") label = "В работе";
+    if (task.status === "done") label = "Готово";
+
+    /* Срок могли не выбрать — показываем понятный текст вместо пустоты */
+    let dueText = "Срок не указан";
+    if (task.due !== "") dueText = `Срок: ${task.due}`;
+
+    /* Карточка: класс card и data-id, чтобы позже находить запись по клику */
+    return `<li class="card" data-id="${task.id}">
+      <h3>${task.title}</h3>
+      <p>${dueText}</p>
+      <p>Статус: ${label}</p>
+    </li>`;
+  }).join("");
+}
